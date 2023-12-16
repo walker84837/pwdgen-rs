@@ -1,6 +1,7 @@
 # Define variables
 CC = gcc
-CFLAGS = -Ofast -march=native -Wall -Wextra -pedantic -std=gnu99 -pie $(shell pkg-config --cflags libssl libcrypto)
+PKGFLAGS = $(shell pkg-config --cflags libssl libcrypto) 
+CFLAGS = -Ofast -march=native -Wall -Wextra -pedantic -std=gnu89 -pie 
 LDFLAGS = $(shell pkg-config --libs libssl libcrypto)
 SRCDIR = src
 OBJDIR = obj
@@ -16,12 +17,12 @@ all: $(EXECUTABLE)
 # Compile the source files into object files
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(shell mkdir -p $(OBJDIR) $(BINDIR))
-	$(CC) $(CFLAGS) -c $< -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) -c $< -o $@ $(PKGFLAGS) $(LDFLAGS)
 
 # Link the object files to create the executable
 $(EXECUTABLE): $(OBJECTS)
 	$(shell mkdir -p $(OBJDIR) $(BINDIR))
-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(PKGFLAGS) $(LDFLAGS)
 
 # Clean up the generated files
 clean:
