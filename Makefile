@@ -1,7 +1,7 @@
 # Define variables
 CC = gcc
 PKGFLAGS = $(shell pkg-config --cflags libssl libcrypto) 
-CFLAGS = -Ofast -march=native -Wall -Wextra -pedantic -std=gnu89 -pie 
+CFLAGS = -O2 -march=native -Wall -Wextra -pedantic -std=gnu11 -pie 
 LDFLAGS = $(shell pkg-config --libs libssl libcrypto)
 SRCDIR = src
 OBJDIR = obj
