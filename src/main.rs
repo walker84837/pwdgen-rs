@@ -5,8 +5,8 @@ use rand::{seq::SliceRandom, Rng};
 /// A password generator, written in Rust.
 #[derive(Parser)]
 struct Args {
-    #[arg(short, help = "The number of passwords to generate")]
-    number: Option<usize>,
+    #[arg(short, help = "The number of passwords to generate", default_value = "1")]
+    number: usize,
 }
 
 fn get_random_int(limit: usize) -> usize {
@@ -24,9 +24,8 @@ fn get_password() -> String {
     }
 
     password.push((get_random_int(26) as u8 + 65u8) as char);
-    password.shuffle(&mut rand::thread_rng());
-
     password.push((get_random_int(10) as u8 + 48u8) as char);
+
     password.shuffle(&mut rand::thread_rng());
 
     password[6] = '-';
@@ -37,7 +36,7 @@ fn get_password() -> String {
 
 fn main() -> Result<()> {
     let cli = Args::parse();
-    let quantity = cli.number.unwrap_or(1);
+    let quantity = cli.number;
 
     for _ in 0..quantity {
         println!("{}", get_password());
