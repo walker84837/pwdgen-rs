@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## \[Unreleased\]
 
+## \[0.3.0\] - 2024-02-16
+
+### Changed
+
+  - Rewrite in Rust.
+
 ## \[0.2.1\] - 2023-12-16
 
 ### Fixed
