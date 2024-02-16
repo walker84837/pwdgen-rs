@@ -36,7 +36,7 @@ Run the program with an optional argument to specify the number of passwords.
 For instance, to generate 10 passwords:
 
 ``` console
-./cpasswordgenerator -n 10
+./pwdgen -n 10
 ```
 
 ## Contributing
