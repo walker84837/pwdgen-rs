@@ -1,6 +1,7 @@
 use anyhow::Result;
 use clap::Parser;
 use rand::{seq::SliceRandom, Rng};
+use rayon::prelude::*;
 
 /// A password generator, written in Rust.
 #[derive(Parser)]
@@ -38,9 +39,9 @@ fn main() -> Result<()> {
     let cli = Args::parse();
     let quantity = cli.number;
 
-    for _ in 0..quantity {
+    (0..quantity).into_par_iter().for_each(|_| {
         println!("{}", get_password());
-    }
+    });
 
     Ok(())
 }
