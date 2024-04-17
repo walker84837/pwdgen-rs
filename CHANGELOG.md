@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## \[Unreleased\]
 
+## [0.3.1] - 2024-04-17
+
+### Changed
+
+- Improve password generator function in `main.rs` for clarity.
+- Update dependencies in `Cargo.lock`
+- Update `Cargo.toml` to include licensing information, categories, keywords, and repository link.
+- Tweak build settings in Cargo.toml:
+    - enabling stripping,
+    - link-time optimization (LTO)
+    - overflow checks
+    - setting panic to `abort`
+
 ## \[0.3.0\] - 2024-02-16
 
 ### Changed
