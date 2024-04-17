@@ -1,12 +1,24 @@
 [package]
 name = "pwdgen"
-version = "0.3.0"
+version = "0.3.1"
 edition = "2021"
+license = "GPL-3.0"
+categories = ["command-line-utilities", "cryptography"]
+keywords = ["command-line", "cli", "password-generator"]
+readme = "README.md"
+repository = "https://github.com/walker84837/pwdgen-rs"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.dev]
+debug = false
+
+[profile.release]
+strip = true
+lto = true
+overflow-checks = true
+panic = "abort"
 
 [dependencies]
-anyhow = "1.0"
+anyhow = "1.0.82"
 clap = { version = "4.5", features = ["derive"] }
-rand = "0.8"
-structopt = "0.3"
+rand = "0.8.5"
+rayon = "1.8.1"

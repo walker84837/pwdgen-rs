@@ -1,31 +1,33 @@
 use anyhow::Result;
 use clap::Parser;
 use rand::{seq::SliceRandom, Rng};
+use rayon::prelude::*;
 
 /// A password generator, written in Rust.
 #[derive(Parser)]
 struct Args {
-    #[arg(short, help = "The number of passwords to generate", default_value = "1")]
+    #[arg(short, default_value = "1", help = "The number of passwords")]
     number: usize,
 }
 
-fn get_random_int(limit: usize) -> usize {
-    let random_number: usize = rand::thread_rng().gen();
-    random_number % limit
-}
-
 fn get_password() -> String {
-    let lowercase_letters = "abcdefghijklmnopqrstuvwxyz";
-    let mut password: Vec<char> = Vec::with_capacity(26);
+    const MAX_LENGTH: usize = 26;
+    const LOWERCASE_LETTERS: &str = "abcdefghijklmnopqrstuvwxyz";
+
+    let get_random_int = |limit: usize| -> usize {
+        let random_number: usize = rand::thread_rng().gen();
+        random_number % limit
+    };
+
+    let mut password: Vec<char> = Vec::with_capacity(MAX_LENGTH);
 
     for _ in 0..18 {
-        let random_index = get_random_int(26);
-        password.push(lowercase_letters.chars().nth(random_index).unwrap());
+        let random_index = get_random_int(MAX_LENGTH);
+        password.push(LOWERCASE_LETTERS.chars().nth(random_index).unwrap());
     }
 
-    password.push((get_random_int(26) as u8 + 65u8) as char);
+    password.push((get_random_int(MAX_LENGTH) as u8 + 65u8) as char);
     password.push((get_random_int(10) as u8 + 48u8) as char);
-
     password.shuffle(&mut rand::thread_rng());
 
     password[6] = '-';
@@ -36,11 +38,10 @@ fn get_password() -> String {
 
 fn main() -> Result<()> {
     let cli = Args::parse();
-    let quantity = cli.number;
 
-    for _ in 0..quantity {
+    (0..cli.number).into_par_iter().for_each(|_| {
         println!("{}", get_password());
-    }
+    });
 
     Ok(())
 }
