@@ -5,14 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 project adheres to [Semantic Versioning](https://semver.org/).
 
-## \[Unreleased\]
+## [Unreleased]
+
+## [0.4.0] - 2024-08-06
 
 ### Added
 
-  - Option to change number of password sections, for example `r2ixkh-rkBcei`
-    instead of `r2ixkh-rkBcei-cokmys`.
+- Added a new `sections` option for password generation, allowing users
+  to specify the number of sections in the generated password.
 
-  - Add TOML config (maybe number of password sections).
+### Changed
+
+- Changed the binary name to 'cwv' in documentation and PKGBUILD script.
+- Rename project from 'pwdgen' to 'cryptweave'.
 
 ## [0.3.1] - 2024-04-17
 
@@ -27,13 +32,13 @@ project adheres to [Semantic Versioning](https://semver.org/).
     - overflow checks
     - setting panic to `abort`
 
-## \[0.3.0\] - 2024-02-16
+## [0.3.0] - 2024-02-16
 
 ### Changed
 
   - Rewrite in Rust.
 
-## \[0.2.1\] - 2023-12-16
+## [0.2.1] - 2023-12-16
 
 ### Fixed
 
@@ -41,7 +46,7 @@ project adheres to [Semantic Versioning](https://semver.org/).
     numbers incorrectly.
   - The code style is now more consistent, using the Linux kernel coding style.
 
-## \[0.2.0\] - 2023-11-27
+## [0.2.0] - 2023-11-27
 
 ### Removed
 
@@ -52,7 +57,7 @@ project adheres to [Semantic Versioning](https://semver.org/).
   - Replaced C's `rand()` function with OpenSSL's random function for security
     purposes.
 
-## \[0.1.0\] - 2023-11-02
+## [0.1.0] - 2023-11-02
 
 ### Added
 

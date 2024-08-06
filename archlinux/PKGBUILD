@@ -1,14 +1,14 @@
 # Maintainer: walker84837 <walker84837@gmail.com>
-pkgname=pwdgen
-pkgver=0.3.1
+pkgname=cryptweave
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A lightning-fast password generator"
 arch=('x86_64')
-url="https://github.com/walker84837/pwdgen-rs"
+url="https://github.com/walker84837/cryptweave-rs"
 license=('GPL-3.0')
 depends=('gcc-libs')  # Rust binaries typically depend on glibc
 makedepends=('cargo')  # Rust projects use cargo for building
-source=("git+https://github.com/walker84837/pwdgen-rs.git")
+source=("git+https://github.com/walker84837/cryptweave-rs.git")
 md5sums=('SKIP')  # Since we're using git source, checksum is skipped
 
 check() {
@@ -25,5 +25,5 @@ build() {
 
 package() {
     cd "$srcdir"
-    install -Dm755 "target/release/pwdgen" "$pkgdir/usr/bin/pwdgen"
+    install -Dm755 "target/release/cryptweave" "$pkgdir/usr/bin/cwv"
 }

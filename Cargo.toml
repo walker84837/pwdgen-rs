@@ -1,12 +1,12 @@
 [package]
-name = "pwdgen"
-version = "0.3.1"
+name = "cryptweave"
+version = "0.4.0"
 edition = "2021"
 license = "GPL-3.0"
 categories = ["command-line-utilities", "cryptography"]
 keywords = ["command-line", "cli", "password-generator"]
 readme = "README.md"
-repository = "https://github.com/walker84837/pwdgen-rs"
+repository = "https://github.com/walker84837/cryptweave-rs"
 
 [profile.dev]
 debug = false
